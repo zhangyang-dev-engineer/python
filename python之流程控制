@@ -19,3 +19,24 @@ python代码是在执行时，是按照自上向下顺序执行的
       条件表达式，条件表达式用来设置循环执行的条件
       更新表达式，修改初始化变量的值
     循环嵌套：外层循环每执行一次，内存循环要执行一圈，外层循环控制高度，内层循环控制宽度
+  break可以立即退出循环语句（包括else)
+  continue 可以用来跳过当次循环z
+  break和continue都是只对离他最近的循环起作用
+  模块： 通过模块可以对python进行扩展
+      from time import * time()函数可以获取当前时间，返回的单位是秒
+      质数优化，任意数num,验证的范围在num<=num**0.5   质数的范围在以num的平方根为对称中心的数
+        begain = time()
+        i=2
+        while i<=100000:
+            flag = True
+            j=2
+            while j<=i**0.5:
+                if i%j ==0:
+                    flag=False
+                    break
+                j+=1
+            if flag:
+                print(i)
+            i+=1
+        end = time()
+        print('程序用了  ',end-begain,'秒')
