@@ -1,0 +1,6 @@
+爬虫： 基础：基本语法与数据结构，文件/数据库相关知识，函数/面向对象编程 ，异常处理，并发编程
+      相关概念：http协议  get/post   cookie/useragent/proxy..
+      模块：urllib/requests/scrapy   re/bs4/xpath/css
+     
+     http:超文本传输协议，客户端和服务器之间数据传输协议（基于TCP）
+     服务器默认端口：80
