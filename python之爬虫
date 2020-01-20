@@ -4,3 +4,80 @@
      
      http:超文本传输协议，客户端和服务器之间数据传输协议（基于TCP）
      服务器默认端口：80
+     get请求资源/post 提交表单或者文件，可能修改服务器资源/put 更新资源/delete 删除指定资源 /options  获取服务器支持的Http请求方法，检查服务器性能
+     Http请求header:
+            Header字段      说明
+            Host             请求的服务器的域名
+            User-Agent        用户请求信息：浏览器，操作系统等信息
+            Accept            请求端接收数据类型
+            Accept-Encoding   指定接收数据的压缩编码类型
+            Cookie            Cookie信息
+            Date              信息
+            Keep-Alive        长连接
+     Http 应答：状态行，消息报头  正文
+            状态码：
+                  状态码                   说明
+                  1xxx                      请求已接受，继续处理
+                  2xxx                      请求成功
+                  3xxx                      重定向，继续处理
+                  4xxx                      客户端请求错误（403 Forbidden/404 Not Found/400 BadRequest
+                  5xxx                      服务器端错误
+     Http应答headers
+            Headers字段                    说明
+            Content-length               数据长度
+            Content-Type                 传输内容格式
+            Content-Range                断点续传范围 ，例如：20-400/400
+            set-Cookie             
+     urllib模块：
+            urllib.request          打开读取URL
+            urllib.errer            异常信息
+            urllib.parse            解析URL
+            urllib.robotparser      解析 robots.txt
+     urlopen(url,data=None,timeout=xx,cafile=None,capth=None,cadefault=False,context=None)
+     参数解释：url:链接地址
+               data:None  使用get方法，Not None ，使用post方法;
+               timeout:超时设置
+           
+      读取页面信息：
+         方法
+            req.readable()         是否可读
+            req.read()             读取所有内容
+            req.readline()         读取一行
+            req.readlines()        读取多行
+            req.readinto(b)        读取bytearray中
+            req.close()            关闭连接
+      
+      使用百度进行关键字搜索：
+             1，百度搜索api
+             2,拼接url
+             3,保存搜索结果
+      爬取豆瓣电影Top250
+            连接地址：
+                  1，获取url
+                  2,解析页面：电影名，海报
+                  3，获取下一页面
+                        解析页面：正则表达式，字符串解析
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
