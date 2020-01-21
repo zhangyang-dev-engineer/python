@@ -59,6 +59,12 @@
                         解析页面：正则表达式，字符串解析
                         
  
+ 反扒机制-拒绝非浏览器访问
+      拒绝非浏览器访问：检查请求header中的useragent,referer,cookie等信息
+ 解决办法：
+      1，搜集user-agent并保存，爬取过程中更换user-agent
+      2,referer使用浏览器分析提取referer
+      3,登录过程中保留cookie
  
  import aiohttp
 import asyncio
