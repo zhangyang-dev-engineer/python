@@ -57,6 +57,91 @@
                   2,解析页面：电影名，海报
                   3，获取下一页面
                         解析页面：正则表达式，字符串解析
+                        
+ 
+ 
+ import aiohttp
+import asyncio
+import async_timeout
+from pyquery import PyQuery as pq
+
+# 在PyQuery中，class的值写在小数点 . 后面，标签直接写（ID是写在#后面）
+# 获取标签的文本内容用text()
+# 空格表示子孙节点
+# 标签里的空格表示并列，表示这个div标签有cont,a,b,c,d这五个类名，但在css语法里空格表示嵌套，所以我们要添加其他类名的时候不能输入空格，而是直接用小数点来添加其他类名
+async def fetch(session, url):
+    head = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36'}
+    with async_timeout.timeout(10):
+        async with session.get(url, headers=head) as response:
+            html = await response.text()
+            file = pq(html)
+            #print(file)
+            return file('h5 .feed-block-title,a').text()
+
+
+async def main():
+    urls = ['https://www.smzdm.com/fenlei/zhinengshouji/p{}/#feed-main'.format(i) for i in range(2,11)]
+    async with aiohttp.ClientSession() as session:
+        for url in urls:
+            html = await fetch(session, url)
+            print(html)
+
+loop = asyncio.get_event_loop()
+loop.run_until_complete(main())
+
+
+
+
+
+
+
+# import aiohttp
+# import asyncio
+# import async_timeout
+# from pyquery import PyQuery as pq
+#
+#
+# async def fetch(session, url):
+#     head = {
+#         'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36'}
+#     with async_timeout.timeout(10):
+#         async with session.get(url, headers=head) as response:
+#             html = await response.text()
+#             file = pq(html)
+#             return file('.feed-ver-title').eq(0).text()
+#
+#
+# async def main():
+#     urls = ['https://faxian.smzdm.com/p{}'.format(i) for i in range(2, 11)]
+#     async with aiohttp.ClientSession() as session:
+#         for url in urls:
+#             html = await fetch(session, url)
+#             print(html)
+#
+# loop = asyncio.get_event_loop()
+# loop.run_until_complete(main())
+
+
+
+# import aiohttp
+# import asyncio
+# import async_timeout
+#
+# async def fetch(session, url):  #定义对每个网页要干的事情
+#     async with async_timeout.timeout(10):
+#         async with session.get(url) as response:
+#             return await response.text()  #因为要等网页连接，所以await
+#
+# async def main():#定义要对哪些网页要做
+#     async with aiohttp.ClientSession() as session:
+#         #urls =[url1,url2,url3....] 定义要做的多个网页列表
+#         #for循环以下事。
+#         html = await fetch(session, 'http://python.org')
+#         print(html)
+#
+# loop = asyncio.get_event_loop()
+# loop.run_until_complete(main())
       
       
       
